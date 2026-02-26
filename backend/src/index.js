@@ -9,14 +9,15 @@ import errorHandling from "./middleware/errorHandling.js";
 
 dotenv .config();
 
-const app = express();
+const app = express(); 
 const port = process.env.PORT || 3001; 
 
 // MiddleWAre 
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
-// Routes 
+
+// Routes  
 app.use("/api",userRoute)
 
 // Error HAndling middleware 
