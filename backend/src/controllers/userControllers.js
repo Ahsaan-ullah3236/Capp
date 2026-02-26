@@ -13,9 +13,6 @@ const handleResponse = (res, status, message,data = null) =>{
         data,
     });
 };
-
-
-
 // Create new user
 export const createUser = async (req, res, next ) => {
     const {name , email} = req.body;
@@ -26,7 +23,6 @@ export const createUser = async (req, res, next ) => {
    next (err);
   }
 };
-
 // Get all users
 export const getAllUsers = async (req, res, next ) => {
   try {
@@ -36,7 +32,6 @@ export const getAllUsers = async (req, res, next ) => {
     next (err);
   }
 };
-
 // Get single user
 export const getUserById = async (req, res, next ) => {
     const {name, email} = req.body;
@@ -48,7 +43,6 @@ export const getUserById = async (req, res, next ) => {
       next (err);
   }
 };
-
 // Update user
 export const updateUser = async (req, res, next ) => {
     const {name , email} = req.body;
@@ -59,7 +53,6 @@ export const updateUser = async (req, res, next ) => {
   next (err);
   }
 };
-
 // Delete user
 export const deleteUser = async (req, res, next ) => {
   try {
