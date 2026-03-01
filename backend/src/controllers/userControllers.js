@@ -6,9 +6,9 @@ import {
     getUserByIdServices,
     updateUserServices
  } from "../userModel.js";
-const handleResponse = (res, status, message,data = null) =>{
-    res,status(status).json({
-        status,
+const handleResponse = (res, statusCode, message, data = null) => {
+    res.status(statusCode).json({
+        status: statusCode,
         message,
         data,
     });
@@ -47,17 +47,20 @@ export const getUserById = async (req, res, next ) => {
 export const updateUser = async (req, res, next ) => {
     const {name , email} = req.body;
   try {
-    const newUser = await updateUserServices (name, email)
-    handleResponse(res,201, "USer Create Successfully ", newUser)
+    
+    const updateUser = await updateUserServices (res, params, id, name, email)
+    if(!updateUser) return handleResponse(res, 404, "User not found")
+    handleResponse(res,200, "USer Create Successfully ", updateUser)
   } catch (err) {
   next (err);
   }
 };
+
 // Delete user
 export const deleteUser = async (req, res, next ) => {
   try {
-    const deletedUser= await deleteUserServices (req,params.id);
-    if(!user ) return handleResponse (res, 404, "User Not Found ")
+    const deletedUser= await deleteUserServices (req, res,next);
+    if(!deletedUser ) return handleResponse (res, 404, "User Not Found ")
     handleResponse(res,201, "USer delte Successfully ", deletedUser )
   } catch (err) {
     next (err);
