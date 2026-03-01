@@ -11,7 +11,7 @@ import createUserTable from "./data/creatUserTable.js";
 dotenv .config();
 
 const app = express(); 
-const port = process.env.DB_PORT || 3001; 
+const port = process.env.PORT || 3001; 
 
 // MiddleWAre 
 app.use(express.json());
@@ -42,3 +42,4 @@ app.listen(port, ()=>{
 })
 // for thesting bracnh 
 // testing for the new branch 
+
